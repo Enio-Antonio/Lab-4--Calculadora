@@ -1,0 +1,157 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\GSNN\OneDrive\Documentos\Lab-4--Calculadora\simulation\qsim
+vcalculadora_2
+Z1 !s100 W^_3P^_bfF056];6GCj^G2
+Z2 I<JUTa65][ZZVdj4J6hLUg1
+Z3 VzkDOzJL5TQ_[7=^W]<3g^2
+Z4 dC:\Users\GSNN\OneDrive\Documentos\Lab-4--Calculadora\simulation\qsim
+Z5 w1731939130
+Z6 8calculadora.vo
+Z7 Fcalculadora.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|calculadora.vo|
+Z10 o-work work -O0
+Z11 !s108 1731939130.989000
+Z12 !s107 calculadora.vo|
+!i10b 1
+!s85 0
+!s101 -O0
+vcalculadora_2_vlg_check_tst
+Z13 !s100 k7RVfTMORe5`DJ6KWgBP[0
+Z14 IM?=TZZ<Sg?D441gdJ94:43
+Z15 V^PGOLK5X^ZPdFhLTjiH8J2
+R4
+Z16 w1731939129
+Z17 8calculadora.vt
+Z18 Fcalculadora.vt
+L0 61
+R8
+r1
+31
+Z19 !s108 1731939131.069000
+Z20 !s107 calculadora.vt|
+Z21 !s90 -work|work|calculadora.vt|
+R10
+!i10b 1
+!s85 0
+!s101 -O0
+vcalculadora_2_vlg_sample_tst
+Z22 !s100 M@a56TN7je2Ol7`M^GL>E3
+Z23 IBgMa@WzD9mizVFM7@nfV?2
+Z24 V?b]k0i7F^]RWca[5lU]_Q2
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+31
+R19
+R20
+R21
+R10
+!i10b 1
+!s85 0
+!s101 -O0
+vcalculadora_2_vlg_vec_tst
+Z25 I`2M3lmRIh7CeRP_?n0UPX1
+Z26 VOB8WiQZ9^c0Sjl5AfYG:P1
+R4
+R16
+R17
+R18
+Z27 L0 272
+R8
+r1
+31
+R19
+R20
+R21
+R10
+Z28 !s100 Tl]4e<9:G9KS>oEFgE4[P0
+!i10b 1
+!s85 0
+!s101 -O0
+vcalculadora_main
+Z29 I4W371z>YBCX@I^MS[>HHF3
+Z30 VO2ajTzcJDZUe`:1^Reko62
+R4
+Z31 w1731940542
+R6
+R7
+L0 31
+R8
+r1
+31
+R9
+R10
+!i10b 1
+Z32 !s100 Q5V1`FVBo@HQ2XK]JG1:T2
+!s85 0
+Z33 !s108 1731940543.433000
+R12
+!s101 -O0
+vcalculadora_main_vlg_check_tst
+!i10b 1
+!s100 4YlYJg7K`PNdPOPRjzi4_3
+IEDJiYS]GzMJAe>>JG:J5S3
+VF>B]oF^i0EmTWBF>oPRX01
+R4
+R31
+R17
+R18
+L0 63
+R8
+r1
+!s85 0
+31
+Z34 !s108 1731940543.513000
+Z35 !s107 calculadora.vt|
+R21
+!s101 -O0
+R10
+vcalculadora_main_vlg_sample_tst
+!i10b 1
+!s100 9IOiUCF;:a9;_?WGG2J5O0
+IQgomj]24407n0z5>S8bfg1
+VdBM5GGBm[noIZ8?2<Q0YP0
+R4
+R31
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R34
+R35
+R21
+!s101 -O0
+R10
+vcalculadora_main_vlg_vec_tst
+!i10b 1
+!s100 ;W4iNTb]g[FMFa6Y_Dhd]0
+IHQ9<=iFREg4]:ZQiSW?Q53
+V]UdZo0Rj;HU40_llA776B2
+R4
+R31
+R17
+R18
+L0 274
+R8
+r1
+!s85 0
+31
+R34
+R35
+R21
+!s101 -O0
+R10

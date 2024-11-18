@@ -1,0 +1,26 @@
+entity reg6 is
+    Port (
+        clk : in bit;            
+        reset : in bit;          
+        enable : in bit;         
+        data_in : in bit_vector(5 downto 0);  
+        data_out : out bit_vector(5 downto 0)
+    );
+end Registrador6Bits;
+
+architecture behav of Registrador6Bits is
+    signal reg : bit_vector(5 downto 0) := (others => '0'); -- Registrador interno
+begin
+    process (clk)
+    begin
+        if rising_edge(clk) then
+            if reset = '1' then
+                reg <= (others => '0'); -- Resetar o registrador
+            elsif enable = '1' then
+                reg <= data_in;         -- Carregar o valor de entrada
+            end if;
+        end if;
+    end process;
+
+    data_out <= reg;
+end Behavioral;

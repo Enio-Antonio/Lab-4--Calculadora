@@ -18,48 +18,30 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "11/18/2024 00:13:43"
+// Generated on "11/18/2024 11:35:41"
                                                                         
-// Verilog Self-Checking Test Bench (with test vectors) for design :    calculadora
+// Verilog Self-Checking Test Bench (with test vectors) for design :    calculadora_main
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module calculadora_vlg_sample_tst(
-	na_1,
-	na_2,
-	na_3,
-	na_4,
-	na_5,
-	na_6,
-	nb_1,
-	nb_2,
-	nb_3,
-	nb_4,
-	nb_5,
-	nb_6,
+module calculadora_main_vlg_sample_tst(
+	a,
+	b,
+	clk,
 	sub,
 	sampler_tx
 );
-input  na_1;
-input  na_2;
-input  na_3;
-input  na_4;
-input  na_5;
-input  na_6;
-input  nb_1;
-input  nb_2;
-input  nb_3;
-input  nb_4;
-input  nb_5;
-input  nb_6;
+input [5:0] a;
+input [5:0] b;
+input  clk;
 input  sub;
 output sampler_tx;
 
 reg sample;
 time current_time;
-always @(na_1 or na_2 or na_3 or na_4 or na_5 or na_6 or nb_1 or nb_2 or nb_3 or nb_4 or nb_5 or nb_6 or sub)
+always @(a or b or clk or sub)
                                                                                 
 begin                                                 
  if ($realtime > 0)                                   
@@ -78,57 +60,33 @@ end
 assign sampler_tx = sample;
 endmodule
 
-module calculadora_vlg_check_tst (
-	r1,
-	r2,
-	r3,
-	r4,
-	r5,
-	r6,
+module calculadora_main_vlg_check_tst (
+	overflow,
+	sum,
 	sampler_rx
 );
-input  r1;
-input  r2;
-input  r3;
-input  r4;
-input  r5;
-input  r6;
+input  overflow;
+input [5:0] sum;
 input sampler_rx;
 
-reg  r1_expected;
-reg  r2_expected;
-reg  r3_expected;
-reg  r4_expected;
-reg  r5_expected;
-reg  r6_expected;
+reg  overflow_expected;
+reg [5:0] sum_expected;
 
-reg  r1_prev;
-reg  r2_prev;
-reg  r3_prev;
-reg  r4_prev;
-reg  r5_prev;
-reg  r6_prev;
+reg  overflow_prev;
+reg [5:0] sum_prev;
 
-reg  r1_expected_prev;
-reg  r2_expected_prev;
-reg  r3_expected_prev;
-reg  r4_expected_prev;
-reg  r5_expected_prev;
-reg  r6_expected_prev;
+reg  overflow_expected_prev;
+reg [5:0] sum_expected_prev;
 
-reg  last_r1_exp;
-reg  last_r2_exp;
-reg  last_r3_exp;
-reg  last_r4_exp;
-reg  last_r5_exp;
-reg  last_r6_exp;
+reg  last_overflow_exp;
+reg [5:0] last_sum_exp;
 
 reg trigger;
 
 integer i;
 integer nummismatches;
 
-reg [1:6] on_first_change ;
+reg [1:2] on_first_change ;
 
 
 initial
@@ -136,72 +94,64 @@ begin
 trigger = 0;
 i = 0;
 nummismatches = 0;
-on_first_change = 6'b1;
+on_first_change = 2'b1;
 end
 
 // update real /o prevs
 
 always @(trigger)
 begin
-	r1_prev = r1;
-	r2_prev = r2;
-	r3_prev = r3;
-	r4_prev = r4;
-	r5_prev = r5;
-	r6_prev = r6;
+	overflow_prev = overflow;
+	sum_prev = sum;
 end
 
 // update expected /o prevs
 
 always @(trigger)
 begin
-	r1_expected_prev = r1_expected;
-	r2_expected_prev = r2_expected;
-	r3_expected_prev = r3_expected;
-	r4_expected_prev = r4_expected;
-	r5_expected_prev = r5_expected;
-	r6_expected_prev = r6_expected;
+	overflow_expected_prev = overflow_expected;
+	sum_expected_prev = sum_expected;
 end
 
 
-
-// expected r1
+// expected sum[ 5 ]
 initial
 begin
-	r1_expected = 1'bX;
+	sum_expected[5] = 1'bX;
+end 
+// expected sum[ 4 ]
+initial
+begin
+	sum_expected[4] = 1'bX;
+end 
+// expected sum[ 3 ]
+initial
+begin
+	sum_expected[3] = 1'bX;
+end 
+// expected sum[ 2 ]
+initial
+begin
+	sum_expected[2] = 1'bX;
+end 
+// expected sum[ 1 ]
+initial
+begin
+	sum_expected[1] = 1'bX;
+end 
+// expected sum[ 0 ]
+initial
+begin
+	sum_expected[0] = 1'bX;
 end 
 
-// expected r2
+// expected overflow
 initial
 begin
-	r2_expected = 1'bX;
-end 
-
-// expected r3
-initial
-begin
-	r3_expected = 1'bX;
-end 
-
-// expected r4
-initial
-begin
-	r4_expected = 1'bX;
-end 
-
-// expected r5
-initial
-begin
-	r5_expected = 1'bX;
-end 
-
-// expected r6
-initial
-begin
-	r6_expected = 1'bX;
+	overflow_expected = 1'bX;
 end 
 // generate trigger
-always @(r1_expected or r1 or r2_expected or r2 or r3_expected or r3 or r4_expected or r4 or r5_expected or r5 or r6_expected or r6)
+always @(overflow_expected or overflow or sum_expected or sum)
 begin
 	trigger <= ~trigger;
 end
@@ -211,86 +161,99 @@ begin
 `ifdef debug_tbench
 	$display("Scanning pattern %d @time = %t",i,$realtime );
 	i = i + 1;
-	$display("| expected r1 = %b | expected r2 = %b | expected r3 = %b | expected r4 = %b | expected r5 = %b | expected r6 = %b | ",r1_expected_prev,r2_expected_prev,r3_expected_prev,r4_expected_prev,r5_expected_prev,r6_expected_prev);
-	$display("| real r1 = %b | real r2 = %b | real r3 = %b | real r4 = %b | real r5 = %b | real r6 = %b | ",r1_prev,r2_prev,r3_prev,r4_prev,r5_prev,r6_prev);
+	$display("| expected overflow = %b | expected sum = %b | ",overflow_expected_prev,sum_expected_prev);
+	$display("| real overflow = %b | real sum = %b | ",overflow_prev,sum_prev);
 `endif
 	if (
-		( r1_expected_prev !== 1'bx ) && ( r1_prev !== r1_expected_prev )
-		&& ((r1_expected_prev !== last_r1_exp) ||
+		( overflow_expected_prev !== 1'bx ) && ( overflow_prev !== overflow_expected_prev )
+		&& ((overflow_expected_prev !== last_overflow_exp) ||
 			on_first_change[1])
 	)
 	begin
-		$display ("ERROR! Vector Mismatch for output port r1 :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", r1_expected_prev);
-		$display ("     Real value = %b", r1_prev);
+		$display ("ERROR! Vector Mismatch for output port overflow :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", overflow_expected_prev);
+		$display ("     Real value = %b", overflow_prev);
 		nummismatches = nummismatches + 1;
 		on_first_change[1] = 1'b0;
-		last_r1_exp = r1_expected_prev;
+		last_overflow_exp = overflow_expected_prev;
 	end
 	if (
-		( r2_expected_prev !== 1'bx ) && ( r2_prev !== r2_expected_prev )
-		&& ((r2_expected_prev !== last_r2_exp) ||
+		( sum_expected_prev[0] !== 1'bx ) && ( sum_prev[0] !== sum_expected_prev[0] )
+		&& ((sum_expected_prev[0] !== last_sum_exp[0]) ||
 			on_first_change[2])
 	)
 	begin
-		$display ("ERROR! Vector Mismatch for output port r2 :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", r2_expected_prev);
-		$display ("     Real value = %b", r2_prev);
+		$display ("ERROR! Vector Mismatch for output port sum[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", sum_expected_prev);
+		$display ("     Real value = %b", sum_prev);
 		nummismatches = nummismatches + 1;
 		on_first_change[2] = 1'b0;
-		last_r2_exp = r2_expected_prev;
+		last_sum_exp[0] = sum_expected_prev[0];
 	end
 	if (
-		( r3_expected_prev !== 1'bx ) && ( r3_prev !== r3_expected_prev )
-		&& ((r3_expected_prev !== last_r3_exp) ||
-			on_first_change[3])
+		( sum_expected_prev[1] !== 1'bx ) && ( sum_prev[1] !== sum_expected_prev[1] )
+		&& ((sum_expected_prev[1] !== last_sum_exp[1]) ||
+			on_first_change[2])
 	)
 	begin
-		$display ("ERROR! Vector Mismatch for output port r3 :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", r3_expected_prev);
-		$display ("     Real value = %b", r3_prev);
+		$display ("ERROR! Vector Mismatch for output port sum[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", sum_expected_prev);
+		$display ("     Real value = %b", sum_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[3] = 1'b0;
-		last_r3_exp = r3_expected_prev;
+		on_first_change[2] = 1'b0;
+		last_sum_exp[1] = sum_expected_prev[1];
 	end
 	if (
-		( r4_expected_prev !== 1'bx ) && ( r4_prev !== r4_expected_prev )
-		&& ((r4_expected_prev !== last_r4_exp) ||
-			on_first_change[4])
+		( sum_expected_prev[2] !== 1'bx ) && ( sum_prev[2] !== sum_expected_prev[2] )
+		&& ((sum_expected_prev[2] !== last_sum_exp[2]) ||
+			on_first_change[2])
 	)
 	begin
-		$display ("ERROR! Vector Mismatch for output port r4 :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", r4_expected_prev);
-		$display ("     Real value = %b", r4_prev);
+		$display ("ERROR! Vector Mismatch for output port sum[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", sum_expected_prev);
+		$display ("     Real value = %b", sum_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[4] = 1'b0;
-		last_r4_exp = r4_expected_prev;
+		on_first_change[2] = 1'b0;
+		last_sum_exp[2] = sum_expected_prev[2];
 	end
 	if (
-		( r5_expected_prev !== 1'bx ) && ( r5_prev !== r5_expected_prev )
-		&& ((r5_expected_prev !== last_r5_exp) ||
-			on_first_change[5])
+		( sum_expected_prev[3] !== 1'bx ) && ( sum_prev[3] !== sum_expected_prev[3] )
+		&& ((sum_expected_prev[3] !== last_sum_exp[3]) ||
+			on_first_change[2])
 	)
 	begin
-		$display ("ERROR! Vector Mismatch for output port r5 :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", r5_expected_prev);
-		$display ("     Real value = %b", r5_prev);
+		$display ("ERROR! Vector Mismatch for output port sum[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", sum_expected_prev);
+		$display ("     Real value = %b", sum_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[5] = 1'b0;
-		last_r5_exp = r5_expected_prev;
+		on_first_change[2] = 1'b0;
+		last_sum_exp[3] = sum_expected_prev[3];
 	end
 	if (
-		( r6_expected_prev !== 1'bx ) && ( r6_prev !== r6_expected_prev )
-		&& ((r6_expected_prev !== last_r6_exp) ||
-			on_first_change[6])
+		( sum_expected_prev[4] !== 1'bx ) && ( sum_prev[4] !== sum_expected_prev[4] )
+		&& ((sum_expected_prev[4] !== last_sum_exp[4]) ||
+			on_first_change[2])
 	)
 	begin
-		$display ("ERROR! Vector Mismatch for output port r6 :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", r6_expected_prev);
-		$display ("     Real value = %b", r6_prev);
+		$display ("ERROR! Vector Mismatch for output port sum[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", sum_expected_prev);
+		$display ("     Real value = %b", sum_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[6] = 1'b0;
-		last_r6_exp = r6_expected_prev;
+		on_first_change[2] = 1'b0;
+		last_sum_exp[4] = sum_expected_prev[4];
+	end
+	if (
+		( sum_expected_prev[5] !== 1'bx ) && ( sum_prev[5] !== sum_expected_prev[5] )
+		&& ((sum_expected_prev[5] !== last_sum_exp[5]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port sum[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", sum_expected_prev);
+		$display ("     Real value = %b", sum_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_sum_exp[5] = sum_expected_prev[5];
 	end
 
 	trigger <= ~trigger;
@@ -308,158 +271,195 @@ $finish;
 end 
 endmodule
 
-module calculadora_vlg_vec_tst();
+module calculadora_main_vlg_vec_tst();
 // constants                                           
 // general purpose registers
-reg na_1;
-reg na_2;
-reg na_3;
-reg na_4;
-reg na_5;
-reg na_6;
-reg nb_1;
-reg nb_2;
-reg nb_3;
-reg nb_4;
-reg nb_5;
-reg nb_6;
+reg [5:0] a;
+reg [5:0] b;
+reg clk;
 reg sub;
 // wires                                               
-wire r1;
-wire r2;
-wire r3;
-wire r4;
-wire r5;
-wire r6;
+wire overflow;
+wire [5:0] sum;
 
 wire sampler;                             
 
 // assign statements (if any)                          
-calculadora i1 (
+calculadora_main i1 (
 // port map - connection between master ports and signals/registers   
-	.na_1(na_1),
-	.na_2(na_2),
-	.na_3(na_3),
-	.na_4(na_4),
-	.na_5(na_5),
-	.na_6(na_6),
-	.nb_1(nb_1),
-	.nb_2(nb_2),
-	.nb_3(nb_3),
-	.nb_4(nb_4),
-	.nb_5(nb_5),
-	.nb_6(nb_6),
-	.r1(r1),
-	.r2(r2),
-	.r3(r3),
-	.r4(r4),
-	.r5(r5),
-	.r6(r6),
-	.sub(sub)
+	.a(a),
+	.b(b),
+	.clk(clk),
+	.overflow(overflow),
+	.sub(sub),
+	.sum(sum)
 );
 
-// na_1
+// clk
 initial
 begin
-	na_1 = 1'b0;
+	clk = 1'b0;
+	clk = #20000 1'b1;
+	clk = #10000 1'b0;
+	clk = #60000 1'b1;
+	clk = #10000 1'b0;
+	clk = #50000 1'b1;
+	clk = #10000 1'b0;
+	clk = #60000 1'b1;
+	clk = #10000 1'b0;
+	clk = #50000 1'b1;
+	clk = #10000 1'b0;
+	clk = #70000 1'b1;
+	clk = #10000 1'b0;
+	clk = #70000 1'b1;
+	clk = #10000 1'b0;
+	clk = #50000 1'b1;
+	clk = #10000 1'b0;
+	clk = #60000 1'b1;
+	clk = #10000 1'b0;
+	clk = #50000 1'b1;
+	clk = #10000 1'b0;
+	clk = #60000 1'b1;
+	clk = #10000 1'b0;
+	clk = #110000 1'b1;
+	clk = #10000 1'b0;
+	clk = #90000 1'b1;
+	clk = #10000 1'b0;
 end 
-
-// na_2
+// a[ 5 ]
 initial
 begin
-	na_2 = 1'b0;
+	a[5] = 1'b0;
+	a[5] = #130000 1'b1;
+	a[5] = #280000 1'b0;
 end 
-
-// na_3
+// a[ 4 ]
 initial
 begin
-	na_3 = 1'b0;
+	a[4] = 1'b0;
+	a[4] = #130000 1'b1;
+	a[4] = #130000 1'b0;
 end 
-
-// na_4
+// a[ 3 ]
 initial
 begin
-	na_4 = 1'b0;
+	a[3] = 1'b0;
+	a[3] = #130000 1'b1;
+	a[3] = #280000 1'b0;
+	a[3] = #20000 1'b1;
+	a[3] = #560000 1'b0;
 end 
-
-// na_5
+// a[ 2 ]
 initial
 begin
-	na_5 = 1'b0;
+	a[2] = 1'b0;
+	a[2] = #130000 1'b1;
+	a[2] = #130000 1'b0;
+	a[2] = #290000 1'b1;
+	a[2] = #110000 1'b0;
 end 
-
-// na_6
+// a[ 1 ]
 initial
 begin
-	na_6 = 1'b0;
+	a[1] = 1'b0;
+	a[1] = #130000 1'b1;
+	a[1] = #280000 1'b0;
+	a[1] = #20000 1'b1;
+	a[1] = #560000 1'b0;
 end 
-
-// nb_1
+// a[ 0 ]
 initial
 begin
-	nb_1 = 1'b1;
+	a[0] = 1'b0;
+	a[0] = #130000 1'b1;
+	a[0] = #130000 1'b0;
+	a[0] = #290000 1'b1;
+	a[0] = #110000 1'b0;
+	a[0] = #100000 1'b1;
+	a[0] = #230000 1'b0;
 end 
-
-// nb_2
+// b[ 5 ]
 initial
 begin
-	nb_2 = 1'b0;
+	b[5] = 1'b1;
+	b[5] = #130000 1'b0;
+	b[5] = #630000 1'b1;
+	b[5] = #230000 1'b0;
 end 
-
-// nb_3
+// b[ 4 ]
 initial
 begin
-	nb_3 = 1'b0;
+	b[4] = 1'b1;
+	b[4] = #130000 1'b0;
+	b[4] = #130000 1'b1;
+	b[4] = #150000 1'b0;
 end 
-
-// nb_4
+// b[ 3 ]
 initial
 begin
-	nb_4 = 1'b0;
+	b[3] = 1'b1;
+	b[3] = #130000 1'b0;
+	b[3] = #530000 1'b1;
+	b[3] = #100000 1'b0;
 end 
-
-// nb_5
+// b[ 2 ]
 initial
 begin
-	nb_5 = 1'b0;
+	b[2] = 1'b1;
+	b[2] = #130000 1'b0;
+	b[2] = #130000 1'b1;
+	b[2] = #150000 1'b0;
+	b[2] = #20000 1'b1;
+	b[2] = #330000 1'b0;
 end 
-
-// nb_6
+// b[ 1 ]
 initial
 begin
-	nb_6 = 1'b0;
+	b[1] = 1'b1;
+	b[1] = #130000 1'b0;
+	b[1] = #420000 1'b1;
+	b[1] = #210000 1'b0;
+end 
+// b[ 0 ]
+initial
+begin
+	b[0] = 1'b1;
+	b[0] = #130000 1'b0;
+	b[0] = #130000 1'b1;
+	b[0] = #150000 1'b0;
+	b[0] = #20000 1'b1;
+	b[0] = #560000 1'b0;
 end 
 
 // sub
 initial
 begin
 	sub = 1'b0;
+	sub = #60000 1'b1;
+	sub = #70000 1'b0;
+	sub = #70000 1'b1;
+	sub = #60000 1'b0;
+	sub = #80000 1'b1;
+	sub = #70000 1'b0;
+	sub = #70000 1'b1;
+	sub = #70000 1'b0;
+	sub = #60000 1'b1;
+	sub = #50000 1'b0;
+	sub = #220000 1'b1;
+	sub = #110000 1'b0;
 end 
 
-calculadora_vlg_sample_tst tb_sample (
-	.na_1(na_1),
-	.na_2(na_2),
-	.na_3(na_3),
-	.na_4(na_4),
-	.na_5(na_5),
-	.na_6(na_6),
-	.nb_1(nb_1),
-	.nb_2(nb_2),
-	.nb_3(nb_3),
-	.nb_4(nb_4),
-	.nb_5(nb_5),
-	.nb_6(nb_6),
+calculadora_main_vlg_sample_tst tb_sample (
+	.a(a),
+	.b(b),
+	.clk(clk),
 	.sub(sub),
 	.sampler_tx(sampler)
 );
 
-calculadora_vlg_check_tst tb_out(
-	.r1(r1),
-	.r2(r2),
-	.r3(r3),
-	.r4(r4),
-	.r5(r5),
-	.r6(r6),
+calculadora_main_vlg_check_tst tb_out(
+	.overflow(overflow),
+	.sum(sum),
 	.sampler_rx(sampler)
 );
 endmodule

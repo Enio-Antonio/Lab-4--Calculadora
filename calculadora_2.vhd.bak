@@ -1,0 +1,12 @@
+
+entity calculadora is
+	port( 
+		a 	 		: in bit_vector  (6 downto 0);
+		b 	 		: in bit_vector  (6 downto 0);
+		sub 		: in bit;
+		
+		sum 		: out bit_vector (6 downto 0);
+		overflow : out bit_vector (6 downto 0)
+	);
+		
+end calculadora;

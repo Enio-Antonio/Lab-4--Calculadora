@@ -1,202 +1,248 @@
-|calculadora
-na_1 => full_adder:primeiro_bit.a
-na_2 => full_adder:segundo_bit.a
-na_3 => full_adder:terceiro_bit.a
-na_4 => full_adder:quarto_bit.a
-na_5 => full_adder:quinto_bit.a
-na_6 => full_adder:sexto_bit.a
-nb_1 => mult:mult_nb_1.a
-nb_1 => mult:mult_nb_1.b
-nb_2 => mult:mult_nb_2.a
-nb_2 => mult:mult_nb_2.b
-nb_3 => mult:mult_nb_3.a
-nb_3 => mult:mult_nb_3.b
-nb_4 => mult:mult_nb_4.a
-nb_4 => mult:mult_nb_4.b
-nb_5 => mult:mult_nb_5.a
-nb_5 => mult:mult_nb_5.b
-nb_6 => mult:mult_nb_6.a
-nb_6 => mult:mult_nb_6.b
-sub => mult:mult_nb_1.switch
-sub => full_adder:primeiro_bit.ci
-sub => mult:mult_nb_2.switch
-sub => mult:mult_nb_3.switch
-sub => mult:mult_nb_4.switch
-sub => mult:mult_nb_5.switch
-sub => mult:mult_nb_6.switch
-r1 <= full_adder:primeiro_bit.s
-r2 <= full_adder:segundo_bit.s
-r3 <= full_adder:terceiro_bit.s
-r4 <= full_adder:quarto_bit.s
-r5 <= full_adder:quinto_bit.s
-r6 <= full_adder:sexto_bit.s
+|calculadora_main
+clk => reg6:reg.clk
+a[0] => calculadora_2:calc.a[0]
+a[1] => calculadora_2:calc.a[1]
+a[2] => calculadora_2:calc.a[2]
+a[3] => calculadora_2:calc.a[3]
+a[4] => calculadora_2:calc.a[4]
+a[5] => calculadora_2:calc.a[5]
+b[0] => calculadora_2:calc.b[0]
+b[1] => calculadora_2:calc.b[1]
+b[2] => calculadora_2:calc.b[2]
+b[3] => calculadora_2:calc.b[3]
+b[4] => calculadora_2:calc.b[4]
+b[5] => calculadora_2:calc.b[5]
+sub => calculadora_2:calc.sub
+sum[0] <= reg6:reg.data_out[0]
+sum[1] <= reg6:reg.data_out[1]
+sum[2] <= reg6:reg.data_out[2]
+sum[3] <= reg6:reg.data_out[3]
+sum[4] <= reg6:reg.data_out[4]
+sum[5] <= reg6:reg.data_out[5]
+overflow <= calculadora_2:calc.overflow
 
 
-|calculadora|mult:mult_nb_1
+|calculadora_main|calculadora_2:calc
+a[0] => full_adder:f_add_0.a
+a[1] => full_adder:f_add_1.a
+a[2] => full_adder:f_add_2.a
+a[3] => full_adder:f_add_3.a
+a[4] => full_adder:f_add_4.a
+a[5] => full_adder:f_add_5.a
+b[0] => mult:mux_0.a
+b[0] => mult:mux_0.b
+b[1] => mult:mux_1.a
+b[1] => mult:mux_1.b
+b[2] => mult:mux_2.a
+b[2] => mult:mux_2.b
+b[3] => mult:mux_3.a
+b[3] => mult:mux_3.b
+b[4] => mult:mux_4.a
+b[4] => mult:mux_4.b
+b[5] => mult:mux_5.a
+b[5] => mult:mux_5.b
+sub => mult:mux_0.switch
+sub => mult:mux_1.switch
+sub => mult:mux_2.switch
+sub => mult:mux_3.switch
+sub => mult:mux_4.switch
+sub => mult:mux_5.switch
+sub => full_adder:f_add_0.ci
+sum[0] <= full_adder:f_add_0.s
+sum[1] <= full_adder:f_add_1.s
+sum[2] <= full_adder:f_add_2.s
+sum[3] <= full_adder:f_add_3.s
+sum[4] <= full_adder:f_add_4.s
+sum[5] <= full_adder:f_add_5.s
+overflow <= full_adder:f_add_5.co
+
+
+|calculadora_main|calculadora_2:calc|mult:mux_0
 a => s1.IN0
 b => s2.IN0
 switch => s2.IN1
 switch => s1.IN1
-saida <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|calculadora|full_adder:primeiro_bit
-a => co~2.IN0
-a => co~5.IN0
-a => co~0.IN0
-a => s~0.IN0
-b => co~0.IN1
-b => co~5.IN1
-b => co~2.IN1
-b => s~0.IN1
-ci => co~1.IN1
-ci => co~3.IN1
-ci => co~8.IN1
-ci => s~1.IN1
-ci => co~6.IN1
-ci => s~2.IN1
-ci => s~4.IN1
-co <= co~9.DB_MAX_OUTPUT_PORT_TYPE
-s <= s~6.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|calculadora|mult:mult_nb_2
+|calculadora_main|calculadora_2:calc|mult:mux_1
 a => s1.IN0
 b => s2.IN0
 switch => s2.IN1
 switch => s1.IN1
-saida <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|calculadora|full_adder:segundo_bit
-a => co~2.IN0
-a => co~5.IN0
-a => co~0.IN0
-a => s~0.IN0
-b => co~0.IN1
-b => co~5.IN1
-b => co~2.IN1
-b => s~0.IN1
-ci => co~1.IN1
-ci => co~3.IN1
-ci => co~8.IN1
-ci => s~1.IN1
-ci => co~6.IN1
-ci => s~2.IN1
-ci => s~4.IN1
-co <= co~9.DB_MAX_OUTPUT_PORT_TYPE
-s <= s~6.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|calculadora|mult:mult_nb_3
+|calculadora_main|calculadora_2:calc|mult:mux_2
 a => s1.IN0
 b => s2.IN0
 switch => s2.IN1
 switch => s1.IN1
-saida <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|calculadora|full_adder:terceiro_bit
-a => co~2.IN0
-a => co~5.IN0
-a => co~0.IN0
-a => s~0.IN0
-b => co~0.IN1
-b => co~5.IN1
-b => co~2.IN1
-b => s~0.IN1
-ci => co~1.IN1
-ci => co~3.IN1
-ci => co~8.IN1
-ci => s~1.IN1
-ci => co~6.IN1
-ci => s~2.IN1
-ci => s~4.IN1
-co <= co~9.DB_MAX_OUTPUT_PORT_TYPE
-s <= s~6.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|calculadora|mult:mult_nb_4
+|calculadora_main|calculadora_2:calc|mult:mux_3
 a => s1.IN0
 b => s2.IN0
 switch => s2.IN1
 switch => s1.IN1
-saida <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|calculadora|full_adder:quarto_bit
-a => co~2.IN0
-a => co~5.IN0
-a => co~0.IN0
-a => s~0.IN0
-b => co~0.IN1
-b => co~5.IN1
-b => co~2.IN1
-b => s~0.IN1
-ci => co~1.IN1
-ci => co~3.IN1
-ci => co~8.IN1
-ci => s~1.IN1
-ci => co~6.IN1
-ci => s~2.IN1
-ci => s~4.IN1
-co <= co~9.DB_MAX_OUTPUT_PORT_TYPE
-s <= s~6.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|calculadora|mult:mult_nb_5
+|calculadora_main|calculadora_2:calc|mult:mux_4
 a => s1.IN0
 b => s2.IN0
 switch => s2.IN1
 switch => s1.IN1
-saida <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|calculadora|full_adder:quinto_bit
-a => co~2.IN0
-a => co~5.IN0
-a => co~0.IN0
-a => s~0.IN0
-b => co~0.IN1
-b => co~5.IN1
-b => co~2.IN1
-b => s~0.IN1
-ci => co~1.IN1
-ci => co~3.IN1
-ci => co~8.IN1
-ci => s~1.IN1
-ci => co~6.IN1
-ci => s~2.IN1
-ci => s~4.IN1
-co <= co~9.DB_MAX_OUTPUT_PORT_TYPE
-s <= s~6.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|calculadora|mult:mult_nb_6
+|calculadora_main|calculadora_2:calc|mult:mux_5
 a => s1.IN0
 b => s2.IN0
 switch => s2.IN1
 switch => s1.IN1
-saida <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
+saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|calculadora|full_adder:sexto_bit
-a => co~2.IN0
-a => co~5.IN0
-a => co~0.IN0
-a => s~0.IN0
-b => co~0.IN1
-b => co~5.IN1
-b => co~2.IN1
-b => s~0.IN1
-ci => co~1.IN1
-ci => co~3.IN1
-ci => co~8.IN1
-ci => s~1.IN1
-ci => co~6.IN1
-ci => s~2.IN1
-ci => s~4.IN1
-co <= co~9.DB_MAX_OUTPUT_PORT_TYPE
-s <= s~6.DB_MAX_OUTPUT_PORT_TYPE
+|calculadora_main|calculadora_2:calc|full_adder:f_add_0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+b => s.IN1
+b => s.IN1
+b => s.IN1
+b => s.IN1
+ci => co.IN1
+ci => co.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => co.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+co <= co.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculadora_main|calculadora_2:calc|full_adder:f_add_1
+a => s.IN0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+b => s.IN1
+b => s.IN1
+b => s.IN1
+b => s.IN1
+ci => co.IN1
+ci => co.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => co.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+co <= co.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculadora_main|calculadora_2:calc|full_adder:f_add_2
+a => s.IN0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+b => s.IN1
+b => s.IN1
+b => s.IN1
+b => s.IN1
+ci => co.IN1
+ci => co.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => co.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+co <= co.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculadora_main|calculadora_2:calc|full_adder:f_add_3
+a => s.IN0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+b => s.IN1
+b => s.IN1
+b => s.IN1
+b => s.IN1
+ci => co.IN1
+ci => co.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => co.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+co <= co.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculadora_main|calculadora_2:calc|full_adder:f_add_4
+a => s.IN0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+b => s.IN1
+b => s.IN1
+b => s.IN1
+b => s.IN1
+ci => co.IN1
+ci => co.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => co.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+co <= co.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculadora_main|calculadora_2:calc|full_adder:f_add_5
+a => s.IN0
+a => s.IN0
+a => s.IN0
+a => s.IN0
+b => s.IN1
+b => s.IN1
+b => s.IN1
+b => s.IN1
+ci => co.IN1
+ci => co.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => s.IN1
+ci => co.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+co <= co.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculadora_main|reg6:reg
+clk => reg[0].CLK
+clk => reg[1].CLK
+clk => reg[2].CLK
+clk => reg[3].CLK
+clk => reg[4].CLK
+clk => reg[5].CLK
+data_in[0] => reg[0].DATAIN
+data_in[1] => reg[1].DATAIN
+data_in[2] => reg[2].DATAIN
+data_in[3] => reg[3].DATAIN
+data_in[4] => reg[4].DATAIN
+data_in[5] => reg[5].DATAIN
+data_out[0] <= reg[0].DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= reg[1].DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= reg[2].DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= reg[3].DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= reg[4].DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= reg[5].DB_MAX_OUTPUT_PORT_TYPE
 
 
