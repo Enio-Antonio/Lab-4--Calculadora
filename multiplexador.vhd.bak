@@ -1,0 +1,3 @@
+entity mult is 
+	port(a, b, switch : in bit; saida : out bit);
+end mult;

@@ -1,0 +1,7 @@
+entity calculadora is
+	port();
+end calculadora;
+
+architecture main of calculadora is
+
+end architecture main;

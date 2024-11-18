@@ -1,0 +1,3 @@
+entity full_adder is 
+	port(a, b, ci : in bit; co, s : out bit);
+end full_adder;
