@@ -1,5 +1,5 @@
 Flow report for calculadora
-Mon Nov 18 11:35:42 2024
+Tue Nov 19 00:54:57 2024
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon Nov 18 11:35:42 2024           ;
+; Flow Status                        ; Successful - Tue Nov 19 00:54:57 2024           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; calculadora                                     ;
 ; Top-level Entity Name              ; calculadora_main                                ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/18/2024 11:33:35 ;
+; Start date & time ; 11/19/2024 00:54:46 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; calculadora         ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+------------------+----------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name      ; Section Id     ;
 +-------------------------------------+---------------------------------+---------------+------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 110073160123734.173194041510700 ; --            ; --               ; --             ;
+; COMPILER_SIGNATURE_ID               ; 106556709339125.173198848626864 ; --            ; --               ; --             ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; On                              ; --            ; --               ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                     ; --            ; --               ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)       ; <None>        ; --               ; --             ;
@@ -94,14 +94,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 4634 MB             ; 00:00:01                           ;
-; Fitter                    ; 00:00:05     ; 1.0                     ; 4874 MB             ; 00:00:05                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 4558 MB             ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:00     ; 1.0                     ; 4539 MB             ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4510 MB             ; 00:00:00                           ;
-; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 4518 MB             ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 4518 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:09     ; --                      ; --                  ; 00:00:11                           ;
+; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 4635 MB             ; 00:00:01                           ;
+; Fitter                    ; 00:00:04     ; 1.0                     ; 4883 MB             ; 00:00:03                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 4560 MB             ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:00     ; 1.0                     ; 4540 MB             ; 00:00:00                           ;
+; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 4512 MB             ; 00:00:00                           ;
+; Total                     ; 00:00:07     ; --                      ; --                  ; 00:00:05                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -110,13 +108,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; gsnn             ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; Enio             ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; Enio             ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; Enio             ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Enio             ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; Enio             ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
@@ -128,8 +124,6 @@ quartus_fit --read_settings_files=off --write_settings_files=off calculadora -c 
 quartus_asm --read_settings_files=off --write_settings_files=off calculadora -c calculadora
 quartus_sta calculadora -c calculadora
 quartus_eda --read_settings_files=off --write_settings_files=off calculadora -c calculadora
-quartus_eda --gen_testbench --check_outputs=on --tool=modelsim_oem --format=verilog calculadora -c calculadora --vector_source=C:/Users/GSNN/OneDrive/Documentos/Lab-4--Calculadora/Waveform_calc_2.vwf --testbench_file=./simulation/qsim/calculadora.vt
-quartus_eda --functional=on --simulation=on --tool=modelsim_oem --format=verilog calculadora -c calculadora
 
 
 
